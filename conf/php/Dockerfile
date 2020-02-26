@@ -4,6 +4,10 @@ FROM php:7.2-fpm
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+# 使用 阿里源 替换
+RUN sed -i "s@http://deb.debian.org@http://mirrors.aliyun.com@g" /etc/apt/sources.list
+RUN sed -i "s@http://security-cdn.debian.org@http://mirrors.aliyun.com@g" /etc/apt/sources.list
+
 ## Install package and PHP Core extensions
 RUN apt-get update && apt-get install -y \
         git \

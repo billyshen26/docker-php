@@ -6,15 +6,8 @@ FROM composer:latest
 WORKDIR /var/www/html
 
 #更改国内源
-CMD composer config -g repo.packagist composer https://packagist.phpcomposer.com
-
-#更改权限
-CMD chmod -R 777 .
-
-#安装组件
-CMD composer install
-
-#数据迁移
-CMD ./think migrate:run
-
-CMD echo "脚本执行完成"
+CMD composer config -g repo.packagist composer https://packagist.phpcomposer.com \
+&& chmod -R 777 . \
+&& composer install \
+&& ./think migrate:run \
+&& echo "脚本执行完成"
