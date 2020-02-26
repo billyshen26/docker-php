@@ -33,9 +33,9 @@ RUN pecl install /home/redis.tgz && echo "extension=redis.so" > /usr/local/etc/p
 ##    && echo "extension=phalcon.so" > /usr/local/etc/php/conf.d/phalcon.ini
 #
 ## Install Composer
-#ENV COMPOSER_HOME /root/composer
-#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-#ENV PATH $COMPOSER_HOME/vendor/bin:$PATH
+ENV COMPOSER_HOME /root/composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+ENV PATH $COMPOSER_HOME/vendor/bin:$PATH
 #
 ##RUN rm -f /home/redis.tgz \
 ##        rm -f /home/cphalcon.tar.gz
