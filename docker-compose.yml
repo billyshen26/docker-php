@@ -66,5 +66,13 @@ services:
     restart: always
     networks:
       - webnet
+
+  init:
+    build: ./conf/init
+    volumes:
+      - ${APPLICATION}:/var/www/html:rw
+    networks:
+      - webnet
+
 networks:
   webnet:
